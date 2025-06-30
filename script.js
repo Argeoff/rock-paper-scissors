@@ -1,25 +1,24 @@
 //Javascript for simple rock paper scrissors game
 
 const playButton = document.querySelector(".playButton");
+const roundDisplay = document.getElementById("roundDisplay");
+const playerScore = document.getElementById("playerScore");
+const playerChoice = document.getElementById("playerChoice");
 let humanScore = 0;
 let computerScore = 0;
 let humanChoice;
 let computerChoice;
-let gameRound = 1;
+let gameRound = 0;
 
-/*playButton.addEventListener("click", ()=> {
-	humanSelection = prompt ("Rock, Paper or Scissors?");
-	gethumanChoice(humanSelection);
-	getcomputerChoice();
-	playRound(humanChoice,computerChoice);
-	console.log("Scoreboard (Human vs Computer): " + humanScore + " , " + computerScore);
-});*/
-
-playButton.addEventListener("click", ()=> {
-	console.log("Game Round : " + gameRound);
+playButton.addEventListener("click", ()=> {	
 	gethumanChoice();
 	getcomputerChoice();
 	playGame();
+	
+	console.log("Game Round : " + gameRound);
+	roundDisplay.textContent = ("Game Round : " + gameRound);
+	playerScore.textContent = ("Score (Human Versus Comupter): " + humanScore + " , " + computerScore);
+	playerChoice.textContent = ("You played: " + humanChoice + " , Computer played: " + computerChoice);
 });
 
 function gethumanChoice(){
@@ -59,7 +58,7 @@ function playRound(humanChoice,computerChoice){
 		}
 	}
 	else if (humanChoice === "paper"){
-		if (computerChoice === "scissors"){
+		if (computerChoice === "rock"){
 			humanScore++;
 			console.log ("You win! " + humanChoice + " beats " + computerChoice);
 		}
