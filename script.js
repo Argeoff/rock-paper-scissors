@@ -7,18 +7,20 @@ let humanChoice;
 let computerChoice;
 
 playButton.addEventListener("click", ()=> {
-	humanChoice = prompt ("Rock, Paper or Scissors?");
-	gethumanChoice(humanChoice);
+	humanSelection = prompt ("Rock, Paper or Scissors?");
+	gethumanChoice(humanSelection);
 	getcomputerChoice();
+	playRound(humanChoice,computerChoice);
+	console.log("Scoreboard (Human vs Computer): " + humanScore + " , " + computerScore);
 });
 
-function gethumanChoice(humanChoice){
-	humanChoice = humanChoice.toLowerCase();
+function gethumanChoice(humanSelection){
+	humanChoice = humanSelection.toLowerCase();
 	console.log("Human Choice: " + humanChoice);
 };
 
-function getcomputerChoice (){
-	computerChoice = Math.floor(Math.random() * 3) +1;
+function getcomputerChoice(){
+	computerChoice = Math.floor(Math.random() * 3) + 1;
 	switch (computerChoice){
 		case 1:
 		computerChoice = "rock";
@@ -28,10 +30,46 @@ function getcomputerChoice (){
 		break;
 		case 3:
 		computerChoice = "scissors";
-		break;		
+		break;	
 	}
-	console.log("Computer Choice: " + computerChoice);
+	console.log("Computer Choice: " + computerChoice);	
 };
 
 function playRound(humanChoice,computerChoice){
+	if (humanChoice === computerChoice){
+		console.log("It's a Tie!");
+	}
+	else if (humanChoice === "rock"){
+		if (computerChoice === "scissors"){
+			humanScore++;
+			console.log ("Human wins!");
+		}
+		else {
+			computerScore++;
+			console.log ("Computer wins!");
+		}
+	}
+	else if (humanChoice === "paper"){
+		if (computerChoice === "scissors"){
+			humanScore++;
+			console.log ("Human wins!");
+		}
+		else {
+			computerScore++;
+			console.log ("Computer wins!");			
+		}
+	}
+	else if (humanChoice === "scissors"){
+		if (computerChoice === "paper"){
+			humanScore++;
+			console.log ("Human wins!");
+		}
+		else {
+			computerScore++;
+			console.log ("Computer wins!");			
+		}
+	}	
 };
+
+
+
