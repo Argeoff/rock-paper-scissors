@@ -17,7 +17,7 @@ playButton.addEventListener("click", ()=> {
 	
 	console.log("Game Round : " + gameRound);
 	roundDisplay.textContent = ("Game Round : " + gameRound);
-	playerScore.textContent = ("Score (Human Versus Comupter): " + humanScore + " , " + computerScore);
+	playerScore.textContent = ("Score (Human Versus Computer): " + humanScore + " , " + computerScore);
 	playerChoice.textContent = ("You played: " + humanChoice + " , Computer played: " + computerChoice);
 });
 
