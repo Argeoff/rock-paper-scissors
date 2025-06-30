@@ -11,76 +11,80 @@ let humanChoice;
 let computerChoice;
 let gameRound = 0;
 
+//this listens to playbutton and runs its code when button is pressed
 playButton.addEventListener("click", ()=> {	
 	gethumanChoice();
 	getcomputerChoice();
 	playGame();
 	
 	console.log("Game Round : " + gameRound);
-	roundDisplay.textContent = ("Game Round : " + gameRound);
+	
+	//changes html paragraphs display accordingly
+	roundDisplay.textContent = ("Game Round : " + gameRound + " / 5");
 	playerScore.textContent = ("Current Score (Human Versus Computer): " + humanScore + " | " + computerScore);
 });
 
 function gethumanChoice(){
 	humanChoice = prompt("Rock, Paper or Scissors?");
+	//transform whole string into lowercase
 	humanChoice = humanChoice.toLowerCase();
+	//Capitalize first letter
+	humanChoice = humanChoice.charAt(0).toUpperCase() + humanChoice.slice(1);
 	console.log("Human Choice: " + humanChoice);
 };
 
 function getcomputerChoice(){
-	computerChoice = Math.floor(Math.random() * 3) + 1;
+	computerChoice = Math.floor(Math.random() * 3) + 1; //output a random number (0 to 3)
 	switch (computerChoice){
 		case 1:
-		computerChoice = "rock";
+		computerChoice = "Rock";
 		break;
 		case 2:
-		computerChoice = "paper";
+		computerChoice = "Paper";
 		break;
 		case 3:
-		computerChoice = "scissors";
+		computerChoice = "Scissors";
 		break;	
 	}
 	console.log("Computer Choice: " + computerChoice);	
 };
 
 function playRound(humanChoice,computerChoice){
-	if (humanChoice === computerChoice){
-		console.log("It's a Tie!");
+	
+	//Checking for invalid user entries
+	if (humanChoice != "Rock" && humanChoice != "Paper" && humanChoice && "Scissors"){
+		alert("You made an invalid entry!");
+	}	
+	else if (humanChoice === computerChoice){
 		tieStyle();
 	}
-	else if (humanChoice === "rock"){
-		if (computerChoice === "scissors"){
+	else if (humanChoice === "Rock"){
+		if (computerChoice === "Scissors"){
 			humanScore++;
-			console.log ("You win! " + humanChoice + " beats " + computerChoice);
 			winStyle();
 		}
 		else {
 			computerScore++;
-			console.log ("You lose! " + computerChoice + " beats " + humanChoice);
 			loseStyle();
 		}
 	}
-	else if (humanChoice === "paper"){
-		if (computerChoice === "rock"){
+	else if (humanChoice === "Paper"){
+		if (computerChoice === "Rock"){
 			humanScore++;
-			console.log ("You win! " + humanChoice + " beats " + computerChoice);
 			winStyle();
 		}
 		else {
 			computerScore++;
-			console.log ("You lose! " + computerChoice + " beats " + humanChoice);
 			loseStyle();
 		}
 	}
-	else if (humanChoice === "scissors"){
-		if (computerChoice === "paper"){
+	else if (humanChoice === "Scissors"){
+		if (computerChoice === "Paper"){
 			humanScore++;
-			console.log ("You win! " + humanChoice + " beats " + computerChoice);
 			winStyle();
 		}
 		else {
 			computerScore++;
-			console.log ("You lose! " + computerChoice + " beats " + humanChoice);
 			loseStyle();
 		}
 	}	
@@ -109,21 +113,24 @@ function playGame() {
 };
 
 function tieStyle (){
+	console.log("It's a Tie!");
 	result.style.backgroundColor = "blue";
 	result.style.color = "white";
 	result.textContent = ("It's a Tie!");
 };
 
 function winStyle(){
+	console.log ("You win! " + humanChoice + " beats " + computerChoice);
 	result.style.backgroundColor = "green";
 	result.style.color = "white";
-	result.textContent = ("You win! " + humanChoice + " beats " + computerChoice);
+	result.textContent = ("You Win! " + humanChoice + " beats " + computerChoice);
 };
 
 function loseStyle(){
+	console.log ("You lose! " + computerChoice + " beats " + humanChoice);
 	result.style.backgroundColor = "red";
 	result.style.color = "white";		
-	result.textContent = ("You lose! " + computerChoice + " beats " + humanChoice);
+	result.textContent = ("You Lose! " + computerChoice + " beats " + humanChoice);
 };
 
 
