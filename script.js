@@ -52,7 +52,7 @@ function getcomputerChoice(){
 function playRound(humanChoice,computerChoice){
 	
 	//Checking for invalid user entries
-	if (humanChoice != "Rock" && humanChoice != "Paper" && humanChoice && "Scissors"){
+	if (humanChoice != "Rock" && humanChoice != "Paper" && humanChoice != "Scissors"){
 		alert("You made an invalid entry!");
 	}	
 	else if (humanChoice === computerChoice){
