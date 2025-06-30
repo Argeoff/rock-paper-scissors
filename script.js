@@ -1,1 +1,4 @@
-console.log("Hello World!");
+//Javascript for simple rock paper scrissors game
+
+function getHumanChoice(){
+};
