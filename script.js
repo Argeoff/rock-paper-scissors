@@ -2,10 +2,89 @@
 const rockButton = document.querySelector("#rock");
 const paperButton = document.querySelector("#paper");
 const scrissorsButton = document.querySelector("#scissors");
+let computerChoice;
 
-rockButton.addEventListener("click", () => console.log("Rock!"));
-paperButton.addEventListener("click", () => console.log("Paper!"));
-scrissorsButton.addEventListener("click", () => console.log("Scissors!"));
+rockButton.addEventListener("click", () => {
+	const humanChoice = "Rock";
+	getcomputerChoice ();
+	console.log(humanChoice + ", " + computerChoice);
+	playRound(humanChoice,computerChoice);
+});
+paperButton.addEventListener("click", () => {
+	const humanChoice = "Paper";
+	getcomputerChoice ();
+	console.log(humanChoice + ", " + computerChoice);
+	playRound(humanChoice,computerChoice);
+});
+scrissorsButton.addEventListener("click", () => {
+	const humanChoice = "Scissors";
+	getcomputerChoice ();
+	console.log(humanChoice + ", " + computerChoice);
+	playRound(humanChoice,computerChoice);
+});
+
+function getcomputerChoice(){
+	computerChoice = Math.floor(Math.random() * 3) + 1; //output a random number (0 to 3)
+	switch (computerChoice){
+		case 1:
+		computerChoice = "Rock";
+		break;
+		case 2:
+		computerChoice = "Paper";
+		break;
+		case 3:
+		computerChoice = "Scissors";
+		break;	
+	}
+};
+
+function playRound(humanChoice,computerChoice){
+	
+	//Checking for invalid user entries
+	if (humanChoice != "Rock" && humanChoice != "Paper" && humanChoice != "Scissors"){
+		alert("You made an invalid entry!");
+	}	
+	else if (humanChoice === computerChoice){
+		//tieStyle();
+		console.log ("it's a tie!")
+	}
+	else if (humanChoice === "Rock"){
+		if (computerChoice === "Scissors"){
+			//humanScore++;
+			//winStyle();
+			console.log("Win!");
+		}
+		else {
+			//computerScore++;
+			//loseStyle();
+			console.log("Lose!");
+		}
+	}
+	else if (humanChoice === "Paper"){
+		if (computerChoice === "Rock"){
+			//humanScore++;
+			//winStyle();
+			console.log("Win!");			
+		}
+		else {
+			//computerScore++;
+			//loseStyle();
+			console.log("Lose!");
+		}
+	}
+	else if (humanChoice === "Scissors"){
+		if (computerChoice === "Paper"){
+			//humanScore++;
+			//winStyle();
+			console.log("Win!");
+		}
+		else {
+			//computerScore++;
+			//loseStyle();
+			console.log("Lose!");
+		}
+	}	
+};
 
 /*const roundDisplay = document.getElementById("roundDisplay");
 const playerScore = document.getElementById("playerScore");
@@ -37,22 +116,6 @@ function gethumanChoice(){
 	//Capitalize first letter
 	humanChoice = humanChoice.charAt(0).toUpperCase() + humanChoice.slice(1);
 	console.log("Human Choice: " + humanChoice);
-};
-
-function getcomputerChoice(){
-	computerChoice = Math.floor(Math.random() * 3) + 1; //output a random number (0 to 3)
-	switch (computerChoice){
-		case 1:
-		computerChoice = "Rock";
-		break;
-		case 2:
-		computerChoice = "Paper";
-		break;
-		case 3:
-		computerChoice = "Scissors";
-		break;	
-	}
-	console.log("Computer Choice: " + computerChoice);	
 };
 
 function playRound(humanChoice,computerChoice){
