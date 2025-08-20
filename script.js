@@ -1,7 +1,13 @@
 //Javascript for simple rock paper scrissors game
+const rockButton = document.querySelector("#rock");
+const paperButton = document.querySelector("#paper");
+const scrissorsButton = document.querySelector("#scissors");
 
+rockButton.addEventListener("click", () => console.log("Rock!"));
+paperButton.addEventListener("click", () => console.log("Paper!"));
+scrissorsButton.addEventListener("click", () => console.log("Scissors!"));
 
-const roundDisplay = document.getElementById("roundDisplay");
+/*const roundDisplay = document.getElementById("roundDisplay");
 const playerScore = document.getElementById("playerScore");
 const result = document.getElementById("result");
 const playButton = document.querySelector(".playButton");
@@ -132,5 +138,5 @@ function loseStyle(){
 	result.style.color = "white";		
 	result.textContent = ("You Lose! " + computerChoice + " beats " + humanChoice);
 };
-
+*/
 
