@@ -2,25 +2,33 @@
 const rockButton = document.querySelector("#rock");
 const paperButton = document.querySelector("#paper");
 const scrissorsButton = document.querySelector("#scissors");
-let computerChoice;
+const result = document.querySelector(".result");
+const currentScore = document.getElementById("score");
+let computerChoice = "";
+let humanChoice = "";
+let humanScore = 0;
+let computerScore = 0;
 
 rockButton.addEventListener("click", () => {
-	const humanChoice = "Rock";
+	humanChoice = "Rock";
 	getcomputerChoice ();
 	console.log(humanChoice + ", " + computerChoice);
 	playRound(humanChoice,computerChoice);
+	currentScore.textContent = ("Current Score (Human Versus Computer): " + humanScore + " | " + computerScore);
 });
 paperButton.addEventListener("click", () => {
-	const humanChoice = "Paper";
+	humanChoice = "Paper";
 	getcomputerChoice ();
 	console.log(humanChoice + ", " + computerChoice);
 	playRound(humanChoice,computerChoice);
+	currentScore.textContent = ("Current Score (Human Versus Computer): " + humanScore + " | " + computerScore);
 });
 scrissorsButton.addEventListener("click", () => {
-	const humanChoice = "Scissors";
+	humanChoice = "Scissors";
 	getcomputerChoice ();
 	console.log(humanChoice + ", " + computerChoice);
 	playRound(humanChoice,computerChoice);
+	currentScore.textContent = ("Current Score (Human Versus Computer): " + humanScore + " | " + computerScore);
 });
 
 function getcomputerChoice(){
@@ -38,52 +46,62 @@ function getcomputerChoice(){
 	}
 };
 
-function playRound(humanChoice,computerChoice){
-	
-	//Checking for invalid user entries
-	if (humanChoice != "Rock" && humanChoice != "Paper" && humanChoice != "Scissors"){
-		alert("You made an invalid entry!");
-	}	
-	else if (humanChoice === computerChoice){
-		//tieStyle();
-		console.log ("it's a tie!")
-	}
-	else if (humanChoice === "Rock"){
-		if (computerChoice === "Scissors"){
-			//humanScore++;
-			//winStyle();
-			console.log("Win!");
-		}
-		else {
-			//computerScore++;
-			//loseStyle();
-			console.log("Lose!");
-		}
-	}
-	else if (humanChoice === "Paper"){
-		if (computerChoice === "Rock"){
-			//humanScore++;
-			//winStyle();
-			console.log("Win!");			
-		}
-		else {
-			//computerScore++;
-			//loseStyle();
-			console.log("Lose!");
-		}
-	}
-	else if (humanChoice === "Scissors"){
-		if (computerChoice === "Paper"){
-			//humanScore++;
-			//winStyle();
-			console.log("Win!");
-		}
-		else {
-			//computerScore++;
-			//loseStyle();
-			console.log("Lose!");
-		}
-	}	
+function playRound(humanChoice, computerChoice){
+    // Checking for invalid user entries
+    if (humanChoice != "Rock" && humanChoice != "Paper" && humanChoice != "Scissors"){
+        alert("You made an invalid entry!");
+        return;
+    }
+
+    if (humanChoice === computerChoice){
+        tieStyle();
+    } 
+	else if (
+		//checking every win condition~ pretty smart huh. thanks to chatGPT
+        (humanChoice === "Rock" && computerChoice === "Scissors") ||
+        (humanChoice === "Paper" && computerChoice === "Rock") ||
+        (humanChoice === "Scissors" && computerChoice === "Paper")
+    ){
+        humanScore++;
+        winStyle();
+    } 
+	else {
+        computerScore++;
+        loseStyle();
+    }
+
+    // Now check for game over after updating scores
+    if (humanScore >= 5 || computerScore >= 5){
+        result.style.backgroundColor = "blue";
+        result.style.color = "white";
+        if (humanScore >= 5){
+            result.textContent = "GAME OVER! YOU WIN!";
+        } else {
+            result.textContent = "GAME OVER! COMPUTER WIN!";
+        }
+
+        // Disable buttons to stop the game
+        rockButton.disabled = true;
+        paperButton.disabled = true;
+        scrissorsButton.disabled = true;
+    }
+}
+function tieStyle (){
+	result.style.backgroundColor = "blue";
+	result.style.color = "white";
+	result.textContent = ("It's a Tie!");
+};
+
+function winStyle(){
+	result.style.backgroundColor = "green";
+	result.style.color = "white";
+	result.textContent = ("You Win! " + humanChoice + " beats " + computerChoice);
+};
+
+function loseStyle(){
+	result.style.backgroundColor = "red";
+	result.style.color = "white";		
+	result.textContent = ("You Lose! " + computerChoice + " beats " + humanChoice);
 };
 
 /*const roundDisplay = document.getElementById("roundDisplay");

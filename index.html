@@ -1,30 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Rock Paper Scissors! 🪨📄✂️</title>
-  <style>
-	*{
-		font-family: "Helvetica", sans-serif;
-	}
-  </style>
-</head>
-<body>
-	<h1>Rock Paper Scissors! 🪨 | 📄 | ✂️</h1>
-
-	<!-- <p id="roundDisplay"></p>
-	<p id="playerScore"></p>
-	<p id="playerChoice"></p>
-	<p id="result"></p>
-	<button class="playButton">Play!</button> -->
-
-	<div>
-		<button id="rock">Rock</button>
-		<button id="paper">Paper</button>
-		<button id="scissors">Scissors</button>
-	</div>
-
-	<script src="script.js"></script>
-</body>
+	<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Rock Paper Scissors! 🪨📄✂️</title>
+	<style>
+		*{
+			font-family: "Helvetica", sans-serif;
+		}
+		.result {
+		height: 15px; /* Reserve space */
+		margin: 10px 0;
+		padding: 5px;
+		}
+	</style>
+	</head>
+	<body>
+		<h1>Rock Paper Scissors! 🪨 | 📄 | ✂️</h1>
+		<b>Game will end once a player reach 5 points 😏</b>
+		<p id="score">Current Score (Human Versus Computer): 0 | 0</p>
+		<div class="result"></div>
+		<p>
+			<button id="rock">Rock</button>
+			<button id="paper">Paper</button>
+			<button id="scissors">Scissors</button>
+			<script src="script.js"></script>
+		</p>
+		<!-- <p id="roundDisplay"></p>
+		<p id="playerScore"></p>
+		<p id="playerChoice"></p>
+		<p id="result"></p>
+		<button class="playButton">Play!</button> -->
+	</body>
 </html>
